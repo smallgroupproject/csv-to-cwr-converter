@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website File Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1> This website converts CSV to CWR </h1>
+    <hr>
+    <p><b>Select a file from your folder:</b></p>
+    
+    <form action="/convert" method="POST" enctype="multipart/form-data">
+        <div>
+            <input type="file" id="csv-file" name="csv-file" accept=".csv" required title="Select a CSV file to convert">
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Convert to CWR">
+        </div>
+    </form>
+
+    <div id="result-message" style="text-align:center; margin-top:20px;"></div> <!-- Placeholder for feedback -->
+
+    <script>
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const response = await fetch('/convert', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.text();
+            document.getElementById('result-message').innerHTML = result;
+        });
+    </script>
+</body>
+</html>
