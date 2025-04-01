@@ -4,25 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website File Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1> This website converts CSV to CWR </h1>
-    <hr>
-    <p><b>Select a file from your folder:</b></p>
-    
-    <form action="/convert" method="POST" enctype="multipart/form-data">
-        <div>
-            <input type="file" id="csv-file" name="csv-file" accept=".csv" required title="Select a CSV file to convert">
-        </div>
-        <br>
-        <div>
-            <input type="submit" value="Convert to CWR">
-        </div>
-    </form>
+    <!-- The Form -->
+    <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="text-centre">
+            <h1 class="fst-italic"> This website converts CSV to CWR </h1>
+            <hr class="thick-hr">
+            <p class="fst-italic"><b>Select a file from your folder:</b></p>
+            <form action="/convert" method="POST" enctype="multipart/form-data">
+                <div>
+                    <input class="btn btn-primary" type="file" id="csv-file" name="csv-file" accept=".csv" required title="Select a CSV file to convert">
+                </div>
+                <br>
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Convert to CWR">
+                </div>
+            </form>
 
-    <div id="result-message" style="text-align:center; margin-top:20px;"></div> <!-- Placeholder for feedback -->
 
+        </div>
+    </div>
+    <div class="mycentre" id="result-message" style="text-align:center; margin-top:20px;"></div> <!-- Placeholder for feedback -->
+    <!-- Boostrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- The JavaScript Backend -->
     <script>
         document.querySelector('form').addEventListener('submit', async (e) => {
             e.preventDefault();
